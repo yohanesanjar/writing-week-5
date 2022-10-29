@@ -33,3 +33,12 @@
 - Data analysis
 
 ## RESTful API
+### Pengertian REST
+- REST, atau REpresentational State Transfer, adalah gaya arsitektur untuk menyediakan standar antara sistem komputer di web, sehingga memudahkan sistem untuk berkomunikasi satu sama lain.
+- Sistem yang sesuai dengan REST, sering disebut sistem RESTful, dicirikan oleh bagaimana mereka tidak memiliki kewarganegaraan dan memisahkan masalah klien dan server
+### Komunikasi antara Klien dan Server
+- Membuat Requests
+  - REST mengharuskan klien membuat permintaan ke server untuk mengambil atau mengubah data di server. Permintaan umumnya terdiri dari:
+    - kata kerja HTTP, yang mendefinisikan jenis operasi apa yang harus dilakukan header, yang memungkinkan klien untuk menyampaikan informasi tentang permintaan jalan menuju sumber daya
+    - badan pesan opsional yang berisi data
+    - Selengkapnya tentang teks sumber ini
