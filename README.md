@@ -72,9 +72,9 @@
     Content-Type: text/html
     ```
 ### Response Codes
-- ![image](https://user-images.githubusercontent.com/100120189/198830026-d6280164-ebb4-49fe-9716-19660397b21e.png)
 - Untuk setiap kata kerja HTTP, ada kode status yang diharapkan yang harus dikembalikan server setelah berhasil :
   1. GET — return 200 (OK)
   2. POST — return 201 (CREATED)
   3. PUT — return 200 (OK)
   4. DELETE — return 204 (NO CONTENT) jika operasi gagal, kembalikan kode status paling spesifik yang mungkin terkait dengan masalah yang ditemui.
+![image](https://user-images.githubusercontent.com/100120189/198830026-d6280164-ebb4-49fe-9716-19660397b21e.png)
