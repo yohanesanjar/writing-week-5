@@ -79,3 +79,178 @@
   4. DELETE — return 204 (NO CONTENT) jika operasi gagal, kembalikan kode status paling spesifik yang mungkin terkait dengan masalah yang ditemui.
 
 ![image](https://user-images.githubusercontent.com/100120189/198830026-d6280164-ebb4-49fe-9716-19660397b21e.png)
+
+## Intro Node.Js
+### Tools
+- Visual Studio Code (code editor)
+- Browser latest version (Chrome, mozilla, opera, dll)
+- Command Line Iinterface (mac / linux : terminal, windows : cmd)
+- Node JS - https://nodejs.org/en
+### Pengertian
+> Node.js adalah open-source, lintas platform, back-end Javascript yang berjalan pada V8 engine dan mengeksekusi kode JavaScript di luar browser web. Node.js memungkinkan pengembang menggunakan JavaScript untuk menulis command line tools dan untuk skrip sisi server—menjalankan skrip sisi server untuk menghasilkan konten halaman web dinamis sebelum halaman dikirim ke browser web pengguna.
+### Node JS Architecture
+- **Single Thread**
+  - Thread dalam ilmu komputer adalah eksekusi menjalankan beberapa tugas atau program secara bersamaan. Setiap unit yang mampu mengeksekusi kode disebut thread. Javascript menggunakan konsep single thread, yang berarti hanya memiliki satu tumpukan panggilan yang digunakan untuk menjalankan program.
+- **Even Loop**
+  - Dengan menggunakan konsep arsitektur javascript, walaupun menggunakan single thread tetapi kita dapat melihat javascript seperti menggunakan multi thread
+  - Terdapat event queue yang berguna sebagai penampung ketika terdapat perintah baru yang akan dieksekusi.
+  - Event loop akan memfasilitasi kondisi ini, event loop akan memeriksa terus menerus, ketika antrian kosong di call stack maka akan menambah antrian baru dari event queue sampai semua perintah selesai di eksekusi.
+- **Server side scripting**
+  - Sejatinya javascript merupakan bahasa pemrograman yang digunakan di front end side. Sehingga kita hanya bisa mengerjakan javascript dengan menggunakan browser untuk menampilkan hasil eksekusinya. Tetapi dengan menggunakan NodeJS kita dapat menjalankan javascript di server side menggunakan terminal command line menggunakan perintah “node”.
+### Javascript For Node JS
+- **Arrow Expression**
+  > Arrow expression merupakan fitur terbaru dari javascript, yaitu mempermudah membuat sintaks function menggunakan “=>”
+- **Asynchronous**
+  > Asynchronous merupakan konsep yang paling penting dari javascript. Pada dasarnya, javascript mengeksekusi code secara single thread dan berurutan baris per baris yang disebut dengan synchronous. Sedangkan asynchronous memungkinkan mengeksekusi code tanpa berurutan dengan cara “skip” code dan melanjutkan eksekusi code selanjutnya. Konsep ini menungkinkan code kita tidak terjadi blocking dan lebih efisien.
+- **JSON**
+  > JSON atau Javascript Object Notation merupakan format yang digunakan untuk menyimpan dan mengirim data menggunakan konsep object di javascript. JSON dapat digunakan di hampir semua bahasa pemrograman sehingga sangat cocok untuk dipelajari
+### Build In Module Node JS
+- **Console**
+  - Console merupakan module bawaan dari javascript yang ada di node JS untuk digunakan sebagai debug atau menampilkan code secara interface
+  - Contoh :
+    ```
+    console.log("ini adalah console")
+    ```
+- **Process**
+  - Process adalah modules yang digunakan untuk menampilkan dan mengontrol prosess Node JS yang sedang dijalankan.
+  - Contoh :
+    ```
+    const process = require('process')
+    const env = process.env
+    
+    env.foo = 'bar'
+    console.log(env.foo) // bar
+    ```
+- **OS**
+  - OS module merupakan module yang digunakan untuk menyediakan informasi terkait sistem operasi komputer yang digunakan user.
+  - Contoh :
+    ```
+    let os = require('os')
+    console.log("Platform: " + os.platform())
+    console.log("Architecture: " + os.arch())
+    
+    //Platform: Darwin
+    //Architecture: x64
+    ```
+- **Util**
+  - Module Util merupakan alat bantu / utilities untuk mendukung kebutuhan internal API di Node JS
+  - Contoh :
+    ```
+    const util = require('util')
+    const debuglog = util.debuglog('foo')
+    
+    debuglog('hello from foo [%d]', 123)
+    //FOO 3245 : hello from foo [123]
+    ```
+- **Events**
+  - Contoh :
+    ```
+    const EvenEmitter = require('events')
+    class myEmitter extends evenEmitter {}
+    
+    const myEmitter = new myEmitter()
+    myEmitter.on('event', () => {
+      console.log('an event occured!')
+    })
+    myEmitter.emit('event')
+    ```
+- **Errors**
+  - Errors merupakan modules yang dapat digunakan untuk mendefinisikan error di Node JS sehingga lebih informatif. Kita juga dapat menghandle error menggunakan try catch
+  - Contoh :
+    ```
+    try {
+      const m = 1
+      const n = m +
+    } catch (err) {
+      //handle error
+    }
+    ```
+- **Buffer**
+  - Buffer merupakan modules yang digunakan untuk mengakses, mengelola dan mengubah tipe data raw atau tipe data bytes.
+  - Contoh :
+    ```
+    import { Buffer } from 'buffer'
+    const buf = Buffer.from('hello world','utf8')
+    console.log(buf.toString('hex'))
+    console.log(buf.toString('base64'))
+    ```
+- **FS**
+  - Fs atau “file system” merupakan module yang dapat membantu berinteraksi dengan file yang ada diluar code. FS paling sering digunakan untuk membaca file dengan ekstensi .txt, .csv, dan .json
+  - Contoh :
+    ```
+    import { readFileSyny } from 'fs'
+    readFileSync('<directory>')
+    ```
+- **Timers**
+  - Timers merupakan modules yang digunakan untuk melakukan scheduling atau mengatur waktu pemanggilan fungsi yang dapat diatur di waktu tertentu
+  - Contoh :
+    ```
+    import{
+      setTimeout,
+    } from 'timers/promises'
+    const res = await setTimeout(100, 'result')
+    console.log(res)
+    //Prints 'result'
+    ```
+### Membuat Web Server Dengan Node JS
+- **Node JS Web Server**
+  - Node.js memiliki built-in modul yang disebut HTTP, built-in modul ini memungkinkan Node JS mentransfer data melalui Hyper Text Transfer Protocol (HTTP).
+  - Modul HTTP dapat membuat server HTTP yang mendengarkan port server dan memberikan respons kembali ke klien.
+  - Untuk menggunakan modul HTTP, gunakan require()
+  - Gunakan method createServer() untuk membuat server HTTP
+  - Callback function yang digunakan pada method http.createServer(), akan dijalankan ketika seseorang mencoba mengakses komputer pada port 8080.
+  - Contoh :
+    ```
+    const http = require('http')
+    
+    http.createServer(function(req, res) => {
+      res.write('Hello World')
+      res.end()
+    }).listen(8080)
+    ```
+- **Menambahkan HTTP Header**
+  - Kita bisa menggunakan method res.writeHead() untuk menambahkan header HTTP.
+  - Argumen pertama dari method res.writeHead() adalah status code, 200 berarti semuanya OK
+  - Argumen kedua adalah objek yang berisi header respons.
+  - Contoh : 
+    ```
+    const http = require('http')
+    
+    http.createServer(function(req, res) => {
+      res.writeHead(200, {'Content-Type': 'text/html'})
+      res.write('Hello World')
+      res.end()
+    }).listen(8080)
+    ```
+  - Respons yang dikembalikan dari HTTP web server bisa dalam berbagai format.
+  - Contohnya, Kita bisa mengembalikan response dalam format JSON dan HTML, namun kita juga dapat mengembalikan format teks lain seperti XML dan CSV.
+  - Selain itu web server dapat mengembalikan data non-teks seperti PDF, file zip, audio, dan video.
+  - Format ini harus ditambahkan kedalam HTTP Header.
+- **Membaca Query String**
+  - Callback function pada method http.createServer() memiliki argumen req yang mewakili request dari klien, sebagai objek (objek http.IncomingMessage).
+  - Objek ini memiliki sebuah properti yang disebut "url" yang menyimpan informasi url yang sedang mengakses.
+  - Contoh :
+    ```
+    const http = require('http')
+    
+    http.createServer(function(req, res) => {
+      res.writeHead(200, {'Content-Type': 'text/html'})
+      res.write(req.url)
+      res.end()
+    }).listen(8080)
+    ```
+- **Split Query String**
+  - Ada build-in module yang bisa kita gunakan untuk split query string menjadi beberapa bagian yang dapat dibaca.
+  - Build-in modulenya adalah URL Module.
+  - Contoh :
+    ```
+    const http : require('http')
+    const url : require('url')
+    
+    http.createServer(function(req, res) => {
+      res.writeHead(200, {'Content-Type': 'text/html'})
+      const query = url.parse(req.url, true).query
+      let txt = q.year + " " + q.month 
+      res.end(txt)
+    }).listen(8080)
+    ```
