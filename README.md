@@ -80,15 +80,15 @@
 
 ![image](https://user-images.githubusercontent.com/100120189/198830026-d6280164-ebb4-49fe-9716-19660397b21e.png)
 
-## Intro Node.Js
-### Tools
+# Intro Node.Js
+## Tools
 - Visual Studio Code (code editor)
 - Browser latest version (Chrome, mozilla, opera, dll)
 - Command Line Iinterface (mac / linux : terminal, windows : cmd)
 - Node JS - https://nodejs.org/en
-### Pengertian
+## Pengertian
 > Node.js adalah open-source, lintas platform, back-end Javascript yang berjalan pada V8 engine dan mengeksekusi kode JavaScript di luar browser web. Node.js memungkinkan pengembang menggunakan JavaScript untuk menulis command line tools dan untuk skrip sisi server—menjalankan skrip sisi server untuk menghasilkan konten halaman web dinamis sebelum halaman dikirim ke browser web pengguna.
-### Node JS Architecture
+## Node JS Architecture
 - **Single Thread**
   - Thread dalam ilmu komputer adalah eksekusi menjalankan beberapa tugas atau program secara bersamaan. Setiap unit yang mampu mengeksekusi kode disebut thread. Javascript menggunakan konsep single thread, yang berarti hanya memiliki satu tumpukan panggilan yang digunakan untuk menjalankan program.
 - **Even Loop**
@@ -97,14 +97,14 @@
   - Event loop akan memfasilitasi kondisi ini, event loop akan memeriksa terus menerus, ketika antrian kosong di call stack maka akan menambah antrian baru dari event queue sampai semua perintah selesai di eksekusi.
 - **Server side scripting**
   - Sejatinya javascript merupakan bahasa pemrograman yang digunakan di front end side. Sehingga kita hanya bisa mengerjakan javascript dengan menggunakan browser untuk menampilkan hasil eksekusinya. Tetapi dengan menggunakan NodeJS kita dapat menjalankan javascript di server side menggunakan terminal command line menggunakan perintah “node”.
-### Javascript For Node JS
+## Javascript For Node JS
 - **Arrow Expression**
   > Arrow expression merupakan fitur terbaru dari javascript, yaitu mempermudah membuat sintaks function menggunakan “=>”
 - **Asynchronous**
   > Asynchronous merupakan konsep yang paling penting dari javascript. Pada dasarnya, javascript mengeksekusi code secara single thread dan berurutan baris per baris yang disebut dengan synchronous. Sedangkan asynchronous memungkinkan mengeksekusi code tanpa berurutan dengan cara “skip” code dan melanjutkan eksekusi code selanjutnya. Konsep ini menungkinkan code kita tidak terjadi blocking dan lebih efisien.
 - **JSON**
   > JSON atau Javascript Object Notation merupakan format yang digunakan untuk menyimpan dan mengirim data menggunakan konsep object di javascript. JSON dapat digunakan di hampir semua bahasa pemrograman sehingga sangat cocok untuk dipelajari
-### Build In Module Node JS
+## Build In Module Node JS
 - **Console**
   - Console merupakan module bawaan dari javascript yang ada di node JS untuk digunakan sebagai debug atau menampilkan code secara interface
   - Contoh :
@@ -192,7 +192,7 @@
     console.log(res)
     //Prints 'result'
     ```
-### Membuat Web Server Dengan Node JS
+## Membuat Web Server Dengan Node JS
 - **Node JS Web Server**
   - Node.js memiliki built-in modul yang disebut HTTP, built-in modul ini memungkinkan Node JS mentransfer data melalui Hyper Text Transfer Protocol (HTTP).
   - Modul HTTP dapat membuat server HTTP yang mendengarkan port server dan memberikan respons kembali ke klien.
@@ -254,3 +254,165 @@
       res.end(txt)
     }).listen(8080)
     ```
+
+# Express.js
+- Express.js adalah framework web app untuk Node.js yang ditulis dengan bahasa pemrograman JavaScript. Framework open source ini dibuat oleh TJ Holowaychuk pada tahun 2010 lalu.
+- Express.js adalah framework back end. Artinya, ia bertanggung jawab untuk mengatur fungsionalitas website, seperti pengelolaan routing dan session, permintaan HTTP, penanganan error, serta pertukaran data di server. 
+- 
+## Installation and Preparation Express.js
+- Karena expressJS adalah sebuah modules atau package yang dikembangkan menggunakan bahasa javascript, maka kita bisa menggunakan NPM untuk menginstall express JS
+ ```js
+ npm install express --save
+ ```
+- Terdapat beberapa module yang perlu diinstal untuk mempermudah develop server side application, seperti nodemon (agar dapat restart application otomatis selama proses development)
+```js
+npm install --save-dev nodemon
+```
+
+## Basic Syntax ExpressJS
+
+![ExpressJS](https://user-images.githubusercontent.com/100120189/198963299-b88c5e72-fb62-4eb1-be73-412f700003b8.PNG)
+
+diatas adalah basic syntax dari express JS. Kita akan menggunakan module express yang berisi routing dan listen.
+- Basic Routes
+  > Routes adalah sebuah end point yang diapat kita akses menggunakan URL di website. Didalam routes kita perlu menentukan method API, alamat dan response apa saja yang akan dikeluarkan
+    ![ExpressJS(2)](https://user-images.githubusercontent.com/100120189/198963504-156da124-f1c2-497d-883a-ad69e9d04e3f.PNG)
+
+    - Kita bisa menjalankan aplikasi sederhana kita dengan cara menggunakan “node”. Dan aplikasi kita akan berjalan di alamat ‘http://localhost:3000’
+    
+    - Kemudian kita dapat mengaksesnya di website dan menambah route yang akan kita akses yaitu “/”
+
+      ![ExpressJS(3)](https://user-images.githubusercontent.com/100120189/198963606-18e7f882-97cf-47d2-8856-a0cc5d8b303c.PNG)
+
+## Method ExpressJS
+> Kita dapat menggunakan method dalam REST API seperti `GET`,`POST`, `PUT`, `PATCH` dan `DELETE`
+
+## Response ExpressJS
+- Kita dapat mengirim response berupa output json yang biasa dipakai untuk back end application. Dengan menggunakan output json maka kita dapat mengirim data yang mudah diakses.
+- Objek `res` mewakili respons HTTP yang dikirim oleh aplikasi Express saat mendapat permintaan HTTP.
+- Dalam dokumentasi ini dan menurut konvensi, objek selalu dirujuk sebagai `res`(dan permintaan HTTPnya adalah `req`) tetapi nama sebenarnya ditentukan oleh parameter ke fungsi panggilan balik tempat Anda bekerja.
+- Sebagai contoh:
+  ```js
+  app.get('/user/:id', function (req, res) {
+    res.send('user ' + req.params.id)
+  })
+  ```
+  Di dalam route kita dapat mengirim response menggunakan parameter dari route express.js yaitu `res.Send()` untuk mengirim plain text ketika kita mengakses route tersebut.
+- Properties
+  - `res.app`
+  - `res.headersSent`
+  - `res.locals`
+- Methods
+  - `res.append()`
+  - `res.attachment()`
+  - `res.cookie()`
+  - `res.clearCookie()`
+  - `res.download()`
+  - `res.end()`
+  - `res.format()`
+  - `res.get()`
+  - `res.json()`
+  - `res.jsonp()`
+  - `res.links()`
+  - `res.location()`
+  - `res.redirect()`
+  - `res.render()`
+  - `res.send()`
+  - `res.sendFile()`
+  - `res.sendStatus()`
+  - `res.set()`
+  - `res.status()`
+  - `res.type()`
+  - `res.vary()`
+
+## Status Code
+- HTTP status code merupakan istilah umum yang digunakan untuk menyebut HTTP status line yang mencakup HTTP status code dan HTTP reason phase.
+- Namun, kebanyakan pengguna internet menyebut kode status ini sebagai kode error browser atau kode error intenal server.
+- Ini karena HTTP status line 500: Internal Server Error terdiri dari kode status HTTP 500 dan HTTP reason phase Internal Server Error.
+### Macam-Macam HTTP Status Code
+- Secara umum, terdapat lima kategori HTTP status code, yaitu 
+  - kode respon informasi, 
+  - respon sukses,
+  - pengalihan,
+  - kode error respon klien, dan kode error server.
+- Namun, tidak semua kategori tersebut mengindikasi terjadinya kesalahan saat memuat website.
+- Sebagian kode status dari beberapa kategori hanyalah indikasi dari respon yang diberikan server ketika memuat laman website.
+- Namun, ada beberapa macam HTTP status code yang umum ditemukan.
+- **Kode respon klien error (kode 4xx)**
+  - `400 Bad Request`, Kode ini menunjukkan bahwa server tidak memahami permintaan dikarenakan syntax yang invalid.          
+  - `401 Unauthorized`, HTTP status code ini adalah kode yang dikirim ketika permintaan tidak terautentifikasi. Sehingga, kamu harus melakukan autentikasi untuk mendapatkan respons yang diminta.          
+  - `402 Payment Required`, Kode ini masih dalam pengembangan dan baru akan digunakan di masa mendatang. Tujuan awal pembuatan kode ini adalah menggunakannya untuk sistem pembayaran digital, namun kode status ini sangat jarang digunakan dan tidak ada ketentuan standar.
+  - `403 Forbidden`, Kode status ini biasanya muncul ketika kamu membuka sebuah laman yang tidak kamu miliki aksesnya. Berbeda dengan kode status 401, server akan mengidentifikasimu sebagai pengguna.
+  - `404 Not Found`, Kode ini adalah HTTP status code yang paling umum ditemukan. Di browser, ini berarti URL tidak dikenali. Server juga dapat mengirimkan kode respons ini alih-alih 403 untuk menyembunyikan keberadaan sumber daya dari klien yang tidak sah.        
+  - `408 Request Timeout`, Kode ini dikirim pada koneksi yang tidak aktif oleh beberapa server, bahkan tanpa permintaan sebelumnya oleh klien. Artinya, server ingin mematikan koneksi yang tidak digunakan ini. Respons ini digunakan lebih banyak karena beberapa browser, seperti Chrome, Firefox 27+, atau IE9, menggunakan mekanisme pra-koneksi HTTP untuk mempercepat penjelajahan.
+- **Kode respon server error (5xx)**
+  - `500 Internal Server Error`, HTTP status code ini adalah kode yang dikirimkan ketika server mengalami situasi yang tidak diketahui cara menanganinya.
+  - `502 Bad Gateway`, Respons kesalahan ini berarti bahwa server, saat bekerja sebagai gateway untuk mendapatkan respons yang diperlukan untuk menangani permintaan, mendapat respons yang tidak valid.
+  - `503 Service Unavailable`, Kode ini akan muncul ketika server tidak siap untuk menangani permintaan tersebut. Penyebab umumnya adalah server tidak aktif karena pemeliharaan atau kelebihan beban.
+  - `504 Gateway Timeout`, Kode status ini akan muncul saat server bertindak sebagai gateway dan tidak bisa mendapatkan respons tepat waktu.
+  - `511 Network Authentication Required`, Kode status 511 menunjukkan bahwa kamu perlu melakukan otentikasi untuk mendapatkan akses jaringan.
+    
+## Query
+- Query merupakan parameter yang digunakan untuk membantu menentukan tindakan yang lebih spesifik daripada hanya sekedar router biasa. Biasanya query ditaruh di akhir route dengan memberikan informasi diawali dengan “?” kemudian tedapat key dan data yang dapat ditindak lanjuti. `Ex : “?q=hello&age=23”` 
+- Bagi yang sadar, ketika kita search di google maka terdapat query di route yang kita akses
+  ![ExpressJS(4)](https://user-images.githubusercontent.com/100120189/198965214-9570082d-d3b5-456d-87cf-aa3074a03fb9.PNG)
+
+## Nested route
+> Nested route digunakan ketika terdapat banyak route yang memiliki nama yang sama atau ingin membuat route yang lebih mendalam
+## Express Middleware
+- Apa Itu Middleware ?
+  - `Middleware function` adalah sebuah fungsi yang memiliki akses ke `object request (req)`, `object response (res)`, dan sebuah `fungsi next` didalam request-response cycle.
+- `Fungsi next` biasanya di berikan nama variable next.
+  ![ExpressJS(5)](https://user-images.githubusercontent.com/100120189/198965809-6dbe59e1-89c3-49df-9254-6c66649fb89d.PNG)
+  
+### Bagaimana Cara Middleware Bekerja?
+> Secara umum, prinsip kerja Middleware adalah mencegat request yang masuk untuk kemudian diproses terlebih dahulu sebelum diberikan kepada Controller yang dituju atau diarahkan ke Controller yang lain. Dengan menggunakan fitur ini, kita dapat membuat komponen yang reusable untuk melakukan pekerjaan-pekerjaan tersebut.
+### Apa Saja Yang Bisa Dilakukan Oleh Function Middleware?
+- Menjalankan kode apapun.
+- Memodifikasi Object Request dan Object Response.
+- Menghentikan request-response cycle.
+- Melanjutkan ke middleware function selanjutnya atau ke handler function dalam suatu request response cycle.
+### Jenis Express Middleware
+- Berdasarkan Cara Penggunaan
+  - Application Level Middleware
+  - Router Level Middleware
+  - Error Handling Middleware
+- Berdasarkan Cara Penggunaan : Application Level Middleware
+  - Application Level Middleware adalah sebuh function middleware yang melekat ke instance object Application Express.
+  - Penggunaannya dengan cara memanggil method app.use().
+  - Application Level Middleware akan di jalankan setiap kali Express Application menerima sebuah HTTP Request.
+- Berdasarkan Cara Penggunaan : Router Level Middleware
+  - Router Level Middleware adalah sebuh function middleware yang cara kerjanya sama persis dengan application level middleware, yang menjadikan perbedaan adalah middleware function ini melekat ke instance object Router Express.
+  - Penggunaannya dengan cara memanggil method express.Router().
+  - Router Level Middleware hanya akan di jalankan setiap kali sebuah Express Router yang menggunakan middleware ini menerima sebuah HTTP Request, sedangan pada Router yang lain tidak akan dijalankan.
+- Berdasarkan Source Middleware Function
+  - Express Build-in Middleware
+    - express.static()
+    - express.json()
+    - express.urlEncoded()
+    - Third Party (custom) Middleware
+
+# Design Database with MySQL
+## Entity / Entitas
+> adalah kumpulan objek yang dapat diidetifikasikan secara unik atau berbeda. Biasanya simbol dari entitas adalah persegi panjang
+## Atribut
+>berfungsi untuk mendeskripsikan karakteristik dari entitas tersebut. Simbol dari atribut adalah elips
+## Relasi
+>adalah hubungan antara entitas
+## Membuat Design Database
+1. Menggunakan website/aplikasi pembuat diagram, contohnya : aplikasi atau website draw.io
+   <img width="662" alt="week-05-pict01" src="https://user-images.githubusercontent.com/100120189/198966386-85ef8e71-1483-41bd-9488-4f256a685e74.png">
+   Penjelasan :
+   - Ada 4 entitas yaitu : Kelas, Mata Kuliah, Mahasiswa, dan Dosen
+   - Relasi : 
+     - 1 kelas dapat digunakan oleh 1 mata kuliah -> relasinya adalah one to one
+     - 1 dosen dapat mengajar banyak/beberapa mahasiswa -> relasinya adalah one to many
+     - 1 mahasiswa dapat mengambil beberapa mata kuliah | 1 mata kuliah dapat diambil oleh beberapa mahasiswa -> relasinya adalah many to many
+   - Atribut :
+     - Entitas kelas memiliki 4 atribut : kode_kelas(sebagai primary key), lantai_kelas, kapasitas, dan lokasi
+     - Entitas mata kuliah memiliki 4 atribut : kode_matkul (primary key), jumlah_SKS, nama_matkul, dan deskripsi_matkul
+     - Entitas mahasiswa memiliki 4 atribut : NIM (primary key), nama_mhs, fakultas, dan prodi
+     - Entitas dosen memiliki 4 atribut : NIP (primary key), nama_dosen, alamat_dosen, dan ttl_dosen
+   - Primary key adalah sesuatu yang isinya tidak akan sama dengan yang lain. Contohnya NIM mahasiswa satu dengan mahasiswa lain tidak sama, pasti berbeda-beda
+2. Relationship/Relasi Entity Keseluruhan
+   ![week-05-pict002](https://user-images.githubusercontent.com/100120189/198966656-68c9508c-1d69-4e3e-afb9-b0a16d86b045.png)
