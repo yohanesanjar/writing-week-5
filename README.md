@@ -418,10 +418,11 @@ diatas adalah basic syntax dari express JS. Kita akan menggunakan module express
    ![week-05-pict002](https://user-images.githubusercontent.com/100120189/198966656-68c9508c-1d69-4e3e-afb9-b0a16d86b045.png)
    
 # Design Database With MySQL (Lanjutan)
-- Mahasiswa dapat menyukai banyak film
-  ![lanjutan1](https://user-images.githubusercontent.com/100120189/198967555-e60c4b47-7116-495e-94d6-ba172fa4042a.png)
-- Mahasiswa dapat menyukai banyak film. tiap film memiliki informasi terkait genre, tiap film mempunyai banyak genre
-  ![lanjutan2](https://user-images.githubusercontent.com/100120189/198967624-1ea53a53-b3dc-42d9-a703-03c2cf732a86.png)
+- Membuat design db data film kesukaan
+  - Mahasiswa dapat menyukai banyak film
+    ![lanjutan1](https://user-images.githubusercontent.com/100120189/198967555-e60c4b47-7116-495e-94d6-ba172fa4042a.png)
+  - Mahasiswa dapat menyukai banyak film. tiap film memiliki informasi terkait genre, tiap film mempunyai banyak genre
+    ![lanjutan2](https://user-images.githubusercontent.com/100120189/198967624-1ea53a53-b3dc-42d9-a703-03c2cf732a86.png)
 ## Apa Itu Primary Key Dan Foreign Key Di SQL Database?
 - Primary key adalah tanda pengenal unik yang membedakan satu record dari yang lain. Oleh karena itu, setiap record dalam SQL database management system harus memiliki primary key.
 - ada beberapa aturan yang harus kalian ikuti ketika menentukan primary key untuk tabel:
