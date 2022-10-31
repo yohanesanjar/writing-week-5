@@ -416,3 +416,40 @@ diatas adalah basic syntax dari express JS. Kita akan menggunakan module express
    - Primary key adalah sesuatu yang isinya tidak akan sama dengan yang lain. Contohnya NIM mahasiswa satu dengan mahasiswa lain tidak sama, pasti berbeda-beda
 2. Relationship/Relasi Entity Keseluruhan
    ![week-05-pict002](https://user-images.githubusercontent.com/100120189/198966656-68c9508c-1d69-4e3e-afb9-b0a16d86b045.png)
+   
+# Design Database With MySQL (Lanjutan)
+- Mahasiswa dapat menyukai banyak film
+  ![lanjutan1](https://user-images.githubusercontent.com/100120189/198967555-e60c4b47-7116-495e-94d6-ba172fa4042a.png)
+- Mahasiswa dapat menyukai banyak film. tiap film memiliki informasi terkait genre, tiap film mempunyai banyak genre
+  ![lanjutan2](https://user-images.githubusercontent.com/100120189/198967624-1ea53a53-b3dc-42d9-a703-03c2cf732a86.png)
+## Apa Itu Primary Key Dan Foreign Key Di SQL Database?
+- Primary key adalah tanda pengenal unik yang membedakan satu record dari yang lain. Oleh karena itu, setiap record dalam SQL database management system harus memiliki primary key.
+- ada beberapa aturan yang harus kalian ikuti ketika menentukan primary key untuk tabel:
+  - Primary key harus berisi nilai unik
+  - Kolom primary key tidak boleh berisi nilai NULL
+  - Sebuah tabel hanya memiliki satu primary key
+- Foreign key adalah pengenal unik atau kombinasi pengenal unik yang menghubungkan dua tabel atau lebih dalam database.
+  <br>Saat memutuskan tabel mana dalam database relasional yang harus memiliki foreign key, harus terlebih dahulu mengidentifikasi tabel mana yang merupakan subjek dan objek dalam hubungannya.
+## Perbedaan Primary Key Dan Foreign Key
+- Tidak ada dua baris yang dapat memiliki value identik untuk primary key sedangkan Foreign key dapat berisi value duplikat.
+- Tidak ada batasan dalam memasukkan value ke dalam kolom tabel primary key ssedangkan Saat memasukkan value apa pun dalam tabelforeign key, pastikan bahwa value tersebut ada di kolom primary key.
+- dapat memiliki satu primary key dalam sebuah tabel sedangkan foreign key dapat memiliki beberapa dalam satu tabel.
+## Unnormalized Form
+> Unnormalized Form adalah suatu kondisi dimana sebuah tabel yang memiliki rangkap atau data yang terduplikasi. Unnormalized Form ini sebenarnya adalah kumpulan data data mentah yang dimasukkan semua dalam satu tabel yang sama (tidak dipecah ke tabel lain). Data tersebut di input dengan apa adanya dan tidak dipilah sesuai dengan jenisnya.
+## NORMALISASI
+> proses pengelompokan atribut data yang membentuk entitas sederhana, nonredundan, fleksibel, dan mudah beradaptasi, Sehingga dapat dipastikan bahwa database yang dibuat berkualitas baik.
+## 1nf
+> Suatu relasi disebut memenuhi bentuk normal pertama (1NF) jika dan hanya jika setiap atribut dari relasi tersebut hanya memiliki nilai tunggal dan tidak ada pengulangan grup atribut dalam baris. Bentuk 1NF tidak boleh mengandung grup atribut yang berulang. Tujuan membentuk 1N
+  ![1nf](https://user-images.githubusercontent.com/100120189/198968505-192b9e80-1c97-414e-9918-5ff54b395f0a.png)
+## 2nf
+> Suatu relasi disebut memenuhi bentuk normal kedua (2NF) jika dan hanya jika memenuhi 1NF, setiap atribut yang bukan kunci utama tergantung secara fungsional terhadap semua atribut kunci dan bukan hanya sebagian atribut kunci (fully functionally dependent).
+  ![2nf](https://user-images.githubusercontent.com/100120189/198968648-d9c35fba-fedc-4381-8a8f-96dd38787003.png)
+  ![2nf-2](https://user-images.githubusercontent.com/100120189/198968737-cc67e38e-d81a-413a-8180-2f9e861ac078.png)
+  ![2nf-3](https://user-images.githubusercontent.com/100120189/198968819-a85d65a7-cf41-4707-a86b-dc889c967c31.png)
+## 3nf
+- Suatu relasi disebut memenuhi bentuk normal ketiga (3NF) jika dan hanya jika memenuhi 2NF, setiap atribut yang bukan kunci tidak tergantung secara fungsional terhadap atribut bukan kunci yang lain dalam relasi tsb (tidak terdapat ketergantungan transitif pada atribut bukan kunci).
+- Jika suatu relasi sudah memenuhi 2NF tapi tidak memenuhi 3 NF, maka untuk normalisasi ke bentuk 3NF, tabel 2NF didekomposisi menjadi beberapa tabel hingga masing-masing memenuhi 3NF.
+  ![3nf](https://user-images.githubusercontent.com/100120189/198969094-6b84080b-b8d7-475a-bf56-ad480cb37633.png)
+  ![3nf-1](https://user-images.githubusercontent.com/100120189/198969146-82a074b9-6510-40e0-95a2-ad2adb30c024.png)
+  ![3nf-3](https://user-images.githubusercontent.com/100120189/198969204-039467d9-22fe-40ae-98a5-1060c2b95752.png)
+  ![3nf-4](https://user-images.githubusercontent.com/100120189/198969264-6bf0bcf9-c822-471e-ab04-c4d651d7d997.png)
